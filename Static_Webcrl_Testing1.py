@@ -8,6 +8,11 @@ import requests     # 정적 크롤링, html 문서를 가져오기 위한 패�
 
 import time     # time.sleep 함수를 사용하기 위한 임포트.
 
+import sys
+
+import csv
+
+
 driver = webdriver.Chrome()     # 크롬드라이버 변수할당.
 
 
@@ -48,28 +53,42 @@ time.sleep(3)
 # 왼쪽 행정상태 체크박스를 클릭해서 정리.
 
 
-# 1 부터 31 페이지까지 페이지를 자동으로 이동.
-for PMRS1 in range(1, 4):
+# artcs_titles = driver.find_elements(By.CSS_SELECTOR, "#mainsearch_info_list > div.search_txt")
+#
+# sys.stdout = open('./DataBS_For_Training_1/ArtcsE1.txt', 'w', encoding='utf-8')
+#
+# for i in artcs_titles:
+#     ArtcsE1 = i.text
+#     print(ArtcsE1)
+#
+# sys.stdout.close()
+# ###
+# ###
+# artcs_titles = driver.find_elements(By.CSS_SELECTOR, "#iconStatus")
+#
+# sys.stdout = open('./DataBS_For_Training_1/Result1.txt', 'w', encoding='utf-8')
+#
+# for i in artcs_titles:
+#     Result1 = i.text
+#     print(Result1)
+#
+# sys.stdout.close()
 
-    for SP1 in range(2, 12):
+### 텍스트 파일로 저장.
 
 
-        if SP1 != 11:       # 마지막 11의 버튼은 '다음' 버튼이다.
+file = open('./DataBS_For_Training_1/ArtcsE1.txt', 'r', newline="", encoding='utf-8')
+list = []
+list = file.read().splitlines()
+output_file = open('./DataBS_For_Training_1/ArtcsE1.csv', 'a', newline="", encoding='utf-8')
+wr = csv.writer(output_file, quoting=csv.QUOTE_ALL)
+wr.writerow(list)
 
-            NumbeFF = SP1 + 1
-            PButtn_2 = driver.find_element(By.CSS_SELECTOR, "#divBoardPager > a:nth-child({})".format(NumbeFF))
-            act.click(PButtn_2).perform()       # 아래쪽의 페이지 버튼을 클릭해서 다음 페이지로 이동. (이렇게 해야 검색조건을 유지하면서 다음 페이지로 이동할 수 있다.)
-            time.sleep(3)         # 페이지 이동 후 로딩 대기.
+file = open('./DataBS_For_Training_1/Result1.txt', 'r', newline="", encoding='utf-8')
+list = []
+list = file.read().splitlines()
+output_file = open('./DataBS_For_Training_1/ArtcsE1.csv', 'a', newline="", encoding='utf-8')
+wr = csv.writer(output_file, quoting=csv.QUOTE_ALL)
+wr.writerow(list)
 
-        else:       # 11 버튼은 '다음' 버튼이다.
-            PButtn_2 = driver.find_element(By.CSS_SELECTOR, "#divBoardPager > a.next")
-            act.click(PButtn_2).perform()
-            time.sleep(3)         # 페이지 이동 후 로딩 대기.
-
-
-time.sleep(3)       # 마지막 화면 확인용 대기시간.
-
-
-
-
-
+### csv 파일로 저장 > 행렬 전환 필요한 상태.
