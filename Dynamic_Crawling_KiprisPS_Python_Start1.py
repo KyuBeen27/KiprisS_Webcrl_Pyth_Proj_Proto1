@@ -57,12 +57,12 @@ for PMRS1 in range(1, 4):
             NumbeFF = SP1 + 1
             PButtn_2 = driver.find_element(By.CSS_SELECTOR, "#divBoardPager > a:nth-child({})".format(NumbeFF))
             act.click(PButtn_2).perform()       # 아래쪽의 페이지 버튼을 클릭해서 다음 페이지로 이동. (이렇게 해야 검색조건을 유지하면서 다음 페이지로 이동할 수 있다.)
-            time.sleep(2.5)       # 페이지 이동 후 로딩 대기.
+            time.sleep(2.5)         # 페이지 이동 후 로딩 대기.
 
         else:       # 11 버튼은 '다음' 버튼이다.
             PButtn_2 = driver.find_element(By.CSS_SELECTOR, "#divBoardPager > a.next")
             act.click(PButtn_2).perform()
-            time.sleep(2.5)       # 페이지 이동 후 로딩 대기.
+            time.sleep(2.5)         # 페이지 이동 후 로딩 대기.
 
 
 time.sleep(3)       # 마지막 화면 확인용 대기시간.
