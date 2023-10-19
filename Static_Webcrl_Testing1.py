@@ -50,32 +50,34 @@ act.click(HJ_OK_Box).perform()
 
 time.sleep(3)
 
-# 왼쪽 행정상태 체크박스를 클릭해서 정리.
+### 왼쪽 행정상태 체크박스를 클릭해서 정리.
 
 
-# artcs_titles = driver.find_elements(By.CSS_SELECTOR, "#mainsearch_info_list > div.search_txt")
-#
-# sys.stdout = open('./DataBS_For_Training_1/ArtcsE1.txt', 'w', encoding='utf-8')
-#
-# for i in artcs_titles:
-#     ArtcsE1 = i.text
-#     print(ArtcsE1)
-#
-# sys.stdout.close()
-# ###
-# ###
-# artcs_titles = driver.find_elements(By.CSS_SELECTOR, "#iconStatus")
-#
-# sys.stdout = open('./DataBS_For_Training_1/Result1.txt', 'w', encoding='utf-8')
-#
-# for i in artcs_titles:
-#     Result1 = i.text
-#     print(Result1)
-#
-# sys.stdout.close()
+artcs_titles = driver.find_elements(By.CSS_SELECTOR, "#mainsearch_info_list > div.search_txt")
+
+sys.stdout = open('./DataBS_For_Training_1/ArtcsE1.txt', 'a', encoding='utf-8')
+
+for i in artcs_titles:
+    ArtcsE1 = i.text
+    print(ArtcsE1)
+
+sys.stdout.close()
+###
+###
+artcs_titles = driver.find_elements(By.CSS_SELECTOR, "#iconStatus")
+
+sys.stdout = open('./DataBS_For_Training_1/Result1.txt', 'a', encoding='utf-8')
+
+for i in artcs_titles:
+    Result1 = i.text
+    print(Result1)
+
+sys.stdout.close()
 
 ### 텍스트 파일로 저장.
 
+
+###
 
 file = open('./DataBS_For_Training_1/ArtcsE1.txt', 'r', newline="", encoding='utf-8')
 list = []
